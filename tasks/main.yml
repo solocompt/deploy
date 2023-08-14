@@ -1,0 +1,11 @@
+---
+- name: pull docker image
+  command: "docker pull {{ image }}:{{ tag }}"
+
+- name: tag docker image
+  command: "docker tag {{ image }}:{{ tag }} {{ image }}:{{ env }}"
+
+- name: start container
+  command: "docker compose up -d"
+  args:
+    chdir: "{{ directory }}"
